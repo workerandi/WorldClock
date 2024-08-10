@@ -1,5 +1,6 @@
 function updateTime() {
   //Los Angeles
+  // debug starting here ---------
   let losAngelesElement = document.querySelector("#losAngeles");
   let losAngelesDateElement = losAngelesElement.querySelector(".date");
   let losAngelesTimeElement = losAngelesElement.querySelector(".time");
@@ -9,21 +10,33 @@ function updateTime() {
   losAngelesTimeElement.innerHTML = losAngelesTimezone.format(
     "h:mm:ss [<small>]A[</small>]"
   );
-  //Morelia
-  let moreliaElement = document.querySelector("#morelia");
-  let moreliaDateElement = moreliaElement.querySelector(".date");
-  let moreliaTimeElement = moreliaElement.querySelector(".time");
-  let moreliaTimezone = moment().tz("America/Mexico_City");
+  //Tijuana
+  let tijuanaElement = document.querySelector("#tijuana");
+  let tijuanaDateElement = tijuanaElement.querySelector(".date");
+  let tijuanaTimeElement = tijuanaElement.querySelector(".time");
+  let tijuanaTimezone = moment().tz("America/Tijuana");
 
-  moreliaDateElement.innerHTML = moreliaTimezone.format("MMMM Do YYYY");
-  moreliaTimeElement.innerHTML = moreliaTimezone.format(
+  tijuanaDateElement.innerHTML = tijuanaTimezone.format("MMMM Do YYYY");
+  tijuanaTimeElement.innerHTML = tijuanaTimezone.format(
     "h:mm:ss [<small>]A[</small>]"
   );
 }
-//left of here------
+
 function updateCity(event) {
   let cityTimezone = event.target.value;
-  console.log(cityTimezone);
+  let cityName = cityTimezone.replace("_", " ").split(`/`)[1];
+  let cityTime = moment().tz(cityTimezone);
+  let citiesElement = document.querySelector("#cities");
+  citiesElement.innerHTML = `
+        <div class="city">
+          <div>
+            <h2>${cityName}</h2>
+            <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
+          </div>
+          <div class="time">${cityTime.format(
+            "h:mm:ss"
+          )} <small> ${cityTime.format("A")}</small></div>
+        </div>`;
 }
 updateTime();
 setInterval(updateTime, 1000);
