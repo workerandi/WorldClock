@@ -1,25 +1,29 @@
 function updateTime() {
   //Los Angeles
-  // debug starting here ---------
-  let losAngelesElement = document.querySelector("#losAngeles");
-  let losAngelesDateElement = losAngelesElement.querySelector(".date");
-  let losAngelesTimeElement = losAngelesElement.querySelector(".time");
-  let losAngelesTimezone = moment().tz("America/Los_Angeles");
 
-  losAngelesDateElement.innerHTML = losAngelesTimezone.format("MMMM Do YYYY");
-  losAngelesTimeElement.innerHTML = losAngelesTimezone.format(
-    "h:mm:ss [<small>]A[</small>]"
-  );
+  let losAngelesElement = document.querySelector("#losAngeles");
+  if (losAngelesElement) {
+    let losAngelesDateElement = losAngelesElement.querySelector(".date");
+    let losAngelesTimeElement = losAngelesElement.querySelector(".time");
+    let losAngelesTimezone = moment().tz("America/Los_Angeles");
+
+    losAngelesDateElement.innerHTML = losAngelesTimezone.format("MMMM Do YYYY");
+    losAngelesTimeElement.innerHTML = losAngelesTimezone.format(
+      "h:mm:ss [<small>]A[</small>]"
+    );
+  }
   //Tijuana
   let tijuanaElement = document.querySelector("#tijuana");
-  let tijuanaDateElement = tijuanaElement.querySelector(".date");
-  let tijuanaTimeElement = tijuanaElement.querySelector(".time");
-  let tijuanaTimezone = moment().tz("America/Tijuana");
+  if (tijuanaElement) {
+    let tijuanaDateElement = tijuanaElement.querySelector(".date");
+    let tijuanaTimeElement = tijuanaElement.querySelector(".time");
+    let tijuanaTimezone = moment().tz("America/Tijuana");
 
-  tijuanaDateElement.innerHTML = tijuanaTimezone.format("MMMM Do YYYY");
-  tijuanaTimeElement.innerHTML = tijuanaTimezone.format(
-    "h:mm:ss [<small>]A[</small>]"
-  );
+    tijuanaDateElement.innerHTML = tijuanaTimezone.format("MMMM Do YYYY");
+    tijuanaTimeElement.innerHTML = tijuanaTimezone.format(
+      "h:mm:ss [<small>]A[</small>]"
+    );
+  }
 }
 
 function updateCity(event) {
